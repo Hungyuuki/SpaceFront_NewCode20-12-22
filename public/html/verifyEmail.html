@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>メール認証</title>
+	<link rel="stylesheet" href="../scss/verifyEmail.css">
+	<link rel="stylesheet" href="../scss/styles.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<form class="otc" name="one-time-code" id="verify">
+		<div>
+			<div>メールで送られた認証コードを入力して下さい。</div>
+			<!-- https://developer.apple.com/documentation/security/password_autofill/enabling_password_autofill_on_an_html_input_element -->
+			<div>
+				<input type="number" pattern="[0-9]*" value="" inputtype="numeric" autocomplete="one-time-code"
+					id="otc-1" required>
+
+				<!-- Autocomplete not to put on other input -->
+				<input type="number" pattern="[0-9]*" min="0" max="9" maxlength="1" value="" inputtype="numeric"
+					id="otc-2" required>
+				<input type="number" pattern="[0-9]*" min="0" max="9" maxlength="1" value="" inputtype="numeric"
+					id="otc-3" required>
+				<input type="number" pattern="[0-9]*" min="0" max="9" maxlength="1" value="" inputtype="numeric"
+					id="otc-4" required>
+				<input type="number" pattern="[0-9]*" min="0" max="9" maxlength="1" value="" inputtype="numeric"
+					id="otc-5" required onkeyup="verifyEmailRequest()">
+			</div>
+			<p id="error" class="error"> </p>
+		</div>
+	</form>
+	<script src="../../outBuild/verifyEmail.js"></script>
+</body>
+
+</html>

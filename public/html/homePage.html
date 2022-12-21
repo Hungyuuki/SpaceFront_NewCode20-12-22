@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../scss/homePage.css">
+    <link rel="stylesheet" href="../scss/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title></title>
+</head>
+
+<body>
+    <div class="title-bar">
+        <div class="title-draggable">VOICHAT</div>
+    </div>
+    <div class="header">
+    </div>
+    <div id="floor-list">
+        <div class="floors" id="floors">
+            <div id="add-floor">
+        </div>
+    </div>
+    <div id="room-list" class="room-list">
+        <div class="room" id="room"></div>
+    </div>
+    </div>
+    <!-- <div class="footer">
+        <div class="logo button currentAvatar"><img id="currentAvatar" src=""></div>
+        <div class="mic button" onclick="changeStatusMic(0)">
+            <i class="fa-solid fa-microphone" id="mic-on" style="display: none;"></i>
+            <i class="fa-solid fa-microphone-slash" id="mic-off"></i>
+        </div>
+        <div class="headphone button" onclick="changeStatusSpeaker(0)">
+            <i class="fa-solid fa-headphones" id="speaker-on" style="display: none;"></i>
+            <img src="../static/earphone.png" class="fa-solid fa-earphones" id="speaker-off"
+                style=" width: 20px; height: 20px;">
+        </div> -->
+        <div id="statusMicHeadphone" class="statusMicHeadphone">
+        <div class="buttons">
+            <button id="status" onclick="showSelectStatus()">ステータス</button>
+            <div id="show-status" class="show-status">
+                <input id="custom-status" onclick="blankValue()" onkeydown="listenerChangeStatus(event)" type="text"
+                    placeholder="Enter your custom status...." />
+                <p onclick="changeStatusUser(6)">外す</p>
+                <p onclick="changeStatusUser(0)">離席中</p>
+                <p onclick="changeStatusUser(1)">会議中</p>
+                <p onclick="changeStatusUser(2)">取込中</p>
+                <p onclick="changeStatusUser(3)">電話中</p>
+                <p onclick="changeStatusUser(4)">外出中</p>
+                <p onclick="changeStatusUser(5)">出張中</p>
+            </div>
+        </div>
+        <!-- <div class="pin-button" onclick="pinWindown()">
+            <div id="iconPin">
+                <img src="../static/pin.png" alt="">
+            </div>
+        </div>
+    </div> -->
+    <div class="flex-micheadscreen">
+        <!-- <div class="mic button" onclick="changeStatusMic(0)">
+            <span class="material-icons" style="display: none;">
+                mic
+                </span>
+            <span class="material-icons">
+                mic_off
+            </span>
+        </div>
+        <div class="headphone button" onclick="changeStatusSpeaker(0)">
+            <span class="material-icons" style="display: none;">
+                headset
+                </span>
+            <span class="material-icons">
+                headset_off
+            </span>
+        </div>
+        <div class="screen button">
+            <span class="material-icons">
+                tv
+                </span> -->
+        <div class="mic button" onclick="changeStatusMic(0)">
+            <i class="fa-solid fa-microphone" id="mic-on" style="display: none;"></i>
+            <i class="fa-solid fa-microphone-slash" id="mic-off"></i>
+        </div>
+        <div class="headphone button" onclick="changeStatusSpeaker(0)">
+            <i class="fa-solid fa-headphones" id="speaker-on" style="display: none;"></i>
+            <img src="../static/earphone.png" class="fa-solid fa-earphones" id="speaker-off"
+                style=" width: 20px; height: 20px;">
+        </div>
+        </div>
+    </div>
+</div>
+    <div class="footer">
+        <div class="logo">
+            <img id="currentAvatar">
+            <span class="job">
+                デザイナー
+            </span>
+            <span class="Badge"> 
+              <h3 id="username"></h3> 
+            </span>
+        </div>
+        <div class="exitbutton" onclick="window.api.invoke('leaveRoom')">
+            <i class="fa-solid fa-right-from-bracket"></i>
+        </div>
+    </div>
+</body>
+<script src="../../outBuild/homePage.js"></script>
+<script src="../../outBuild/settings.js"></script>
+</html>

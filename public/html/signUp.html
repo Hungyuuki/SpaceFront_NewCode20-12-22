@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>登録</title>
+	<link rel="stylesheet" href="../scss/signUp.css">
+	<link rel="stylesheet" href="../scss/styles.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<div class="background">
+		<div class="shape"></div>
+		<div class="shape"></div>
+	</div>
+	<form onsubmit="return false">
+		<div class="container">
+			<!--        <h1>こちら</h1>-->
+			<hr>
+			<label for="name"><b>名前</b></label>
+			<input type="text" placeholder="名前" name="name" id="name" required>
+
+			<label for="company"><b>会社名</b></label>
+			<input type="text" placeholder="会社名" name="company" id="company" required>
+			<p class="error" id="error"></p>
+
+			<label for="email"><b>メールアドレス</b></label>
+			<input type="email" placeholder="メールアドレス" name="email" id="email" required>
+
+			<label for="password"><b>パスワード</b></label>
+			<input type="password" placeholder="パスワード" name="psw" id="password" required>
+			<p class="error" id="error-message"></p>
+			<p class="error" id="error-create-user"></p>
+
+			<div class="clearfix">
+				<button type="submit" class="signupbtn" onclick="signUp()">【登録する】</button>
+				<button type="button" class="cancelbtn" onclick="toLoginForm()">【キャンセル】</button>
+			</div>
+		</div>
+	</form>
+</body>
+<script src="../../outBuild/signUp.js">
+
+</script>
+
+</html>

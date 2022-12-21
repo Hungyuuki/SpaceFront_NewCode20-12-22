@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <title></title>
+  <link rel="stylesheet" href="../scss/login.css">
+  <link rel="stylesheet" href="../scss/styles.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+  <form onsubmit="return false">
+    <h3>Login</h3>
+
+    <label for="username">メールアドレス</label>
+    <input type="text" placeholder="メールアドレス" id="username" required>
+
+    <label for="password">パスワード</label>
+    <input type="password" placeholder="パスワード" id="password" required>
+    <p class="error" id="error-message"></p>
+    <button id="loading" onclick="loginRequest()">【ログイン】</button>
+
+    <p> 新規登録は <a id="sign-in" href="#" onclick="signUpForm()"> こちら </a> から </p>
+  </form>
+</body>
+<script src="../../outBuild/login.js"></script>
+
+</html>

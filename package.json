@@ -1,0 +1,54 @@
+{
+  "name": "spacefront",
+  "version": "1.0.0",
+  "description": "voichat",
+  "productName": "Voice Chat",
+  "authors": "cmc",
+  "main": "outBuild/main.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "package-win": "electron-packager . voice-chat --overwrite --asar=false --platform=win32 --arch=x64 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Voice Chat\"",
+    "start": "npm run build && electron ./outBuild/main.js",
+    "release": "electron-builder -m",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.4",
+    "@electron-forge/maker-deb": "^6.0.4",
+    "@electron-forge/maker-rpm": "^6.0.4",
+    "@electron-forge/maker-squirrel": "^6.0.4",
+    "@electron-forge/maker-zip": "^6.0.4",
+    "@types/sound-play": "^1.1.0",
+    "electron": "^20.2.0",
+    "typescript": "^4.8.3"
+  },
+  "dependencies": {
+    "agora-electron-sdk": "^4.0.1-rc.1",
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.3",
+    "electron-squirrel-startup": "^1.0.0",
+    "electron-store": "^8.1.0",
+    "firebase": "^9.11.0",
+    "keyv": "^4.5.0",
+    "redis": "^4.5.1",
+    "socket.io-client": "^4.5.4",
+    "sound-play": "^1.1.0"
+  },
+  "build": {
+    "asar": false,
+    "mac": {
+      "target": [
+        "default"
+      ],
+      "icon": "./resources/installer/icon_lspworld.icns",
+      "entitlements": "entitlements.mac.plist",
+      "gatekeeperAssess": false,
+      "hardenedRuntime": true,
+      "extendInfo": {
+        "NSMicrophoneUsageDescription": "This app requires microphone access to record audio."
+      }
+    }
+  }
+}

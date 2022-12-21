@@ -1,0 +1,64 @@
+body {
+  background: #1c1e21;
+  overflow: hidden;
+}
+/*  */
+.block-modal {
+  background: #1c1e21;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-size: 200%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+p {
+  color: #4bae4f;
+  font-size: 16px;
+  margin-left: 20px;
+}
+
+.button-group-confirm {
+  position: relative;
+  top:0;
+  display: flex;
+}
+
+.button-group-confirm button {
+  margin: 0px auto;
+  width: 120px;
+  height: 40px;
+  margin-bottom: 16px;
+}
+
+button {
+    cursor: pointer;
+}body {
+  background: #1c1e21;
+  overflow: hidden;
+}
+
+
+p {
+  color: #4bae4f;
+  font-size: 16px;
+  margin-left: 20px;
+}
+
+.button-group-confirm {
+  position: relative;
+  top:0;
+  display: flex;
+}
+
+.button-group-confirm button {
+  margin-left: 20px;
+  width: 120px;
+  height: 40px;
+}
+
+button {
+    cursor: pointer;
+}

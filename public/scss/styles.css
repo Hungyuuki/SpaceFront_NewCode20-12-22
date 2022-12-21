@@ -1,0 +1,147 @@
+/* styles.css */
+/*  */
+.draggable {
+  -webkit-app-region: drag;
+    font-size: 13px;
+    margin: auto 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+body {
+  font-family: Times, serif;
+}
+
+.link {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.headerProfile {
+  text-align: center;
+  font-weight: 800;
+}
+
+.text-context-middle {
+  margin-top: 30%;
+  margin-left: 20%;
+}
+
+.userAvatar .imgUserAvatar {
+  width: 70px;
+  height: 70px;
+  margin-left: 70px;
+  border-radius: 50px;
+}
+
+.currentAvatar img {
+  width: 50px;
+  height: 50px;
+  border-radius: 20px;
+}
+
+.userAvatar label {
+  width: 70px;
+  height: 70px;
+  position: absolute;
+}
+
+.userAvatar button {
+  position: absolute;
+  margin-left: 10px;
+}
+
+.userAvatar .uploadImage {
+  border-radius: 5px;
+  border-color: antiquewhite;
+  cursor: pointer;
+}
+
+.userProfile .camera {
+  margin-top: 30px;
+  border-radius: 5px;
+  border-color: antiquewhite;
+  cursor: pointer;
+}
+
+.userName {
+  margin-top: -20px;
+}
+
+.userName input {
+  margin-left: 30px;
+}
+
+.userProfile {
+  line-height: 75px;
+}
+
+.groupButton {
+  display: flex;
+  justify-content: center;
+  column-gap: 21px;
+  bottom: auto;
+}
+
+.buttonLeft {
+  width: 100px;
+  border-radius: 5px;
+  background-color: #9292da;
+  border-color: unset;
+  cursor: pointer;
+}
+
+.buttonRight {
+  width: 100px;
+  border-radius: 5px;
+  background-color: #8f98a6;
+  cursor: pointer;
+  border-color: unset;
+}
+
+.error-message {
+  display: flex;
+  line-height: 20px;
+  font-size: 15px;
+  color: red;
+  text-align: center;
+  margin: 0 0 0 5px;
+}
+
+.userAvatar .cameraCapture {
+    margin-top: 170px;
+    margin-left: 110px;
+    border-radius: 5px;
+    border-color: antiquewhite;
+    cursor: pointer;
+    height: 30px;
+}
+
+.userAvatar .cameraVideo {
+  width: 210px;
+  height: 160px;
+  margin-left: 12%;
+  margin-bottom: 12%;
+}
+
+html, body, video {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+video {
+  display: block;
+}
+
+.userAvatar .imgCapturePicture {
+  margin-top: 130px;
+  margin-left: 130px;
+  border-radius: 5px;
+  border-color: antiquewhite;
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  z-index: 10;
+}
