@@ -25,11 +25,20 @@ const ON_SOCKET_EVENT = {
 };
 const statusUser = ["離席中", "会議中", "取込中", "電話中", "外出中", "出張中", ""];
 const colorStatus = ["gray", "green", "#5d0b0b", "#b5c014", "#911258", "orange", "#F3F3F3", "#555C55FF"];
+const statusIcon = [
+    "../static/logout.png",
+    "../static/online-meeting.png",
+    "../static/rush.png",
+    "../static/viber.png",
+    "../static/logout.png",
+    "../static/briefcase.png"
+];
 let floorIds = [];
 let role = 0;
 const CUSTOM_STATUS = 7;
 const SPECIAL_STATUS = 6;
 const ROLE_ADMIN = 2;
+const ICON_STATUS = 6;
 var userAvatar = document.getElementById('currentAvatar');
 const micOn = document.querySelector(`.mic #mic-on`);
 const micOff = document.querySelector(`.mic #mic-off`);
@@ -137,6 +146,7 @@ const renderHTMLInFloor = (floor_id, rooms, users, oldFloorId) => __awaiter(this
                 user_is_speaker: item.user_is_speaker,
                 uid: item.uid,
                 user_login_status: item.user_login_status,
+                user_status_icon: item.user_status_icon,
                 custom_status: item.user_custom_status
             };
             if (result[index].users) {
@@ -172,11 +182,12 @@ function changeTextColorForElement(elementId, color) {
     }
 }
 function createUsersHTMLInRoom(user) {
-    var _a, _b;
+    var _a, _b, _c, _d;
     let displayMicOn = "none";
     let displayMicOff = "inline";
     let dispayStatus = '';
     const colorBackroundStatus = (_a = colorStatus[user.user_login_status]) !== null && _a !== void 0 ? _a : '';
+    const statusIconElement = (_b = statusIcon[user.user_status_icon]) !== null && _b !== void 0 ? _b : '';
     if (user.user_is_mic == '1') {
         displayMicOn = "inline";
         displayMicOff = "none";
@@ -187,21 +198,27 @@ function createUsersHTMLInRoom(user) {
         displaySpeakerOn = "inline";
         displaySpeakerOff = "none";
     }
-    let user_login_status = (_b = statusUser[user.user_login_status]) !== null && _b !== void 0 ? _b : '';
+    let user_login_status = (_c = statusUser[user.user_login_status]) !== null && _c !== void 0 ? _c : '';
+    let user_status_icon = (_d = statusIcon[user.user_status_icon]) !== null && _d !== void 0 ? _d : '';
     if (user.user_login_status === CUSTOM_STATUS) {
-        user_login_status = user.custom_status;
-        if (user.id === localStorage.getItem("userId")) {
-            localStorage.setItem("custom-status", user.custom_status);
+        if (user.user_status_icon === ICON_STATUS) {
+            user_status_icon = user.custom_status;
+            if (user.id === localStorage.getItem("userId")) {
+                localStorage.setItem("custom-status", user.custom_status);
+            }
         }
     }
     if (!user_login_status) {
-        dispayStatus = '-none';
-        user_login_status = '';
+        if (!user_status_icon) {
+            dispayStatus = '-none';
+            user_login_status = '';
+        }
     }
     return `
                         <div class="user" id="user-${user.user_id}">
                             <div class="logo-user button"><img src="${user.user_avatar}"></div>
-                            <div id='login-status-${user.user_id}' class="status-users${dispayStatus}" style="background-color: ${colorBackroundStatus}; border: transparent">${user_login_status}</div>
+                            <div id='login-status-${user.user_id}' class="status-users${dispayStatus}" style="background-color: ${colorBackroundStatus}; border: transparent">
+                            <img src="${user_login_status}"></div>
                             <h4 class="button">${user.user_name}</h4>
                             <div class="mic button" onclick="changeStatusMic(${user.user_id})">
                               <i class="fa-solid fa-microphone" style="display: ${displayMicOn};" id="mic-on-${user.user_id}"></i>
@@ -433,8 +450,6 @@ function createFLoorElement(floor, backgroundColor, role) {
     <div class="floor" style="display: inline-flex; max-width: 100px; min-width: 60px;
     height: 30px;
     border-radius: 15px;
-    padding-left: 5px;
-    padding-right: 5px;
     margin: auto;
     scroll-snap-align: start;
     scroll-snap-stop: normal;
@@ -471,7 +486,8 @@ function appendUser(user) {
     if (user.changeNewRoom) {
         removeUser(user);
     }
-    let loginStatus = (_a = statusUser[user.login_status]) !== null && _a !== void 0 ? _a : '';
+    // let loginStatus = statusUser[user.login_status] ?? '';
+    let loginStatus = (_a = statusIcon[user.login_status]) !== null && _a !== void 0 ? _a : '';
     if (user.login_status == CUSTOM_STATUS) {
         loginStatus = user.custom_status;
     }
@@ -490,12 +506,15 @@ function appendUser(user) {
         displaySpeakerOff = "none";
     }
     if (!user.login_status) {
-        dispayStatus = '-none';
+        if (!user.statusIcon) {
+            dispayStatus = '-none';
+        }
     }
     let text = `
                       <div class="user" id="user-${user.userId}">
                           <div class="logo-user button"><img src="${user.userAvatar}"></div>
-                          <div id='login-status-${user.userId}' class="status-users${dispayStatus}" style="background-color: ${colorBackroundStatus}; border:transparent;">${loginStatus}</div>
+                          <div id='login-status-${user.userId}' class="status-users${dispayStatus}" style="background-color: ${colorBackroundStatus}; border:transparent;">
+                          <img src="${loginStatus}"></div>
                           <h4 class="button">${user.username}</h4>
                           <div class="mic button" onclick="changeStatusMic(${user.userId})">
                             <i class="fa-solid fa-microphone" style="display: ${displayMicOn};" id="mic-on-${user.userId}"></i>
@@ -966,8 +985,8 @@ function changeStatusSpeaker(id) {
 function listenerChangeStatus(e) {
     if (e.code === "Enter") {
         const customStatus = document.getElementById("custom-status");
-        statusUser[CUSTOM_STATUS] = customStatus.value;
-        localStorage.setItem("custom_status", statusUser[CUSTOM_STATUS]);
+        statusIcon[CUSTOM_STATUS] = customStatus.value;
+        localStorage.setItem("custom_status", statusIcon[CUSTOM_STATUS]);
         changeStatusUser(CUSTOM_STATUS, customStatus.value);
         let showStatus = document.getElementById("show-status");
         showStatus.style.display = "none";

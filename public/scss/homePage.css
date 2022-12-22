@@ -132,17 +132,12 @@ body {
   max-width: 100px;
   height: 30px;
   border-radius: 15px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 0 auto;
-  padding: center;
   scroll-snap-align: start;
   scroll-snap-stop: normal;
-  align-items: center;
-  vertical-align: middle;
 }
 .floor p{
   text-align: center;
+  margin: auto;
 }
 
 .remove-floor {
@@ -357,6 +352,11 @@ ul {
   margin-top: 4px;
 }
 
+.show-status .statusIcon{
+  width: 20px;
+  height: 20px;
+}
+
 .status-users img {
   width: 75%;
   height: auto;
@@ -435,7 +435,6 @@ ul {
   position: absolute;
   right: 30px;
 }
-
 .headphone .button{
   margin-left: auto;
   color: rgb(193,195,205);
@@ -571,7 +570,7 @@ button {
 }
 
 .show-status p{
-  margin: 5px 0 5px 0;
+  margin: 10px 0 10px 0;
   width: 100px;
   height: 20px;
   text-align: center;
@@ -579,6 +578,11 @@ button {
   font-size: 14px;
   position: static;
   align-items: center;
+  /* margin-bottom: 5px; */
+  position: relative;
+}
+.show-status p .statusIcon{
+  bottom: 5px;
 }
 
 
@@ -714,7 +718,6 @@ button {
 /* .logo button .currentAvatar:focus {
   outline: none;
 }
-
 .logo button .currentAvatar::-moz-focus-inner {
   border: 0;
 } */
