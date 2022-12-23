@@ -954,6 +954,7 @@ const updateAvatar = (filePaths: string, is_base64?: boolean) => {
 
 ipcMain.handle("change-login-status", async (event, data) => {
   socket.emit(ON_SOCKET_EVENT.CHANGE_LOGIN_STATUS, {
+    //phát ra các thông tin như sau
     userId: store.get('userId'),
     username: store.get('userName'),
     floor_id: store.get('current_floor_id'),

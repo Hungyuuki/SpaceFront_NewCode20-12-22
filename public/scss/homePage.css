@@ -329,7 +329,7 @@ ul {
 }
 
 .status-users-none {
-  border: none;
+  /* border: none;
   width: 70px;
   height: 32px;
   font-size: 11px;
@@ -339,7 +339,21 @@ ul {
   display: flex;
   align-items: center;
   text-align: center;
+  justify-content: center; */
+  width: 30px;
+  height: 30px;
+  font-size: 10px;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  text-align: center;
   justify-content: center;
+  position: relative;
+  right: 15px;
+  bottom: 15px;
+  border: 3px solid #fff;
+  scale: 0.9;
 }
 
 #custom-status{
@@ -350,6 +364,10 @@ ul {
   text-overflow: ellipsis;
   overflow: hidden;
   margin-top: 4px;
+  margin-left: 5px;
+}
+#show-status{
+align-items: center;
 }
 
 .show-status .statusIcon{
@@ -361,6 +379,7 @@ ul {
   width: 75%;
   height: auto;
   background-size: cover;
+  scale: 0.9;
 }
 
   .object .statusscreen-background { 
@@ -382,9 +401,10 @@ ul {
   .user {
     display: flex;
     align-items: center;
-    margin-bottom: 5px;
-    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
     padding-left: 30px;
+    padding-top: 10px;
     color: rgb(193,195,205);
     position: relative;
     /* top: 60px; */

@@ -44,14 +44,14 @@
             <button id="status" onclick="showSelectStatus()">ステータス</button>
             <div id="show-status" class="show-status">
                 <input id="custom-status" onclick="blankValue()" onkeydown="listenerChangeStatus(event)" type="text"
-                    placeholder="Enter your custom status...." />
+                    placeholder="自分状態入力"/>
                     <p onclick="changeStatusUser(6)">外す</p>
-                    <p onclick="changeStatusUser(0)"><img class="statusIcon" src="../../public/static/logout.png" alt="">離席中</p>
-                    <p onclick="changeStatusUser(1)"><img class="statusIcon" src="../../public/static/online-meeting.png" alt="">会議中</p>
-                    <p onclick="changeStatusUser(2)"><img class="statusIcon" src="../../public/static/rush.png" alt="">取込中</p>
-                    <p onclick="changeStatusUser(3)"><img class="statusIcon" src="../../public/static/viber.png" alt="">電話中</p>
-                    <p onclick="changeStatusUser(4)"><img class="statusIcon" src="../../public/static/logout.png" alt="">外出中</p>
-                    <p onclick="changeStatusUser(5)"><img class="statusIcon" src="../../public/static/briefcase.png" alt="">出張中</p>
+                    <p onclick="changeStatusUser(0)"><img class="statusIcon" id="statusIcon" src="../../public/static/logout.png" alt="">離席中</p>
+                    <p onclick="changeStatusUser(1)"><img class="statusIcon" id="statusIcon" src="../../public/static/online-meeting.png" alt="">会議中</p>
+                    <p onclick="changeStatusUser(2)"><img class="statusIcon" id="statusIcon" src="../../public/static/rush.png" alt="">取込中</p>
+                    <p onclick="changeStatusUser(3)"><img class="statusIcon" id="statusIcon" src="../../public/static/viber.png" alt="">電話中</p>
+                    <p onclick="changeStatusUser(4)"><img class="statusIcon" id="statusIcon" src="../../public/static/logout.png" alt="">外出中</p>
+                    <p onclick="changeStatusUser(5)"><img class="statusIcon" id="statusIcon" src="../../public/static/briefcase.png" alt="">出張中</p>
             </div>
         </div>
         <!-- <div class="pin-button" onclick="pinWindown()">
@@ -76,11 +76,11 @@
             <span class="material-icons">
                 headset_off
             </span>
-        </div>
-        <div class="screen button">
+        </div>-->
+        <div class="screen button" style="display: none;">
             <span class="material-icons">
                 tv
-                </span> -->
+                </span> </div>
         <div class="mic button" onclick="changeStatusMic(0)">
             <i class="fa-solid fa-microphone" id="mic-on" style="display: none;"></i>
             <i class="fa-solid fa-microphone-slash" id="mic-off"></i>

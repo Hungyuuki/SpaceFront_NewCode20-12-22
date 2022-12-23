@@ -899,6 +899,7 @@ const updateAvatar = (filePaths, is_base64) => {
 };
 electron_1.ipcMain.handle("change-login-status", (event, data) => __awaiter(void 0, void 0, void 0, function* () {
     socket.emit(ON_SOCKET_EVENT.CHANGE_LOGIN_STATUS, {
+        //phát ra các thông tin như sau
         userId: store.get('userId'),
         username: store.get('userName'),
         floor_id: store.get('current_floor_id'),

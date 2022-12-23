@@ -184,9 +184,8 @@ function changeTextColorForElement(elementId: string, color: string) {
 function createUsersHTMLInRoom(user: any) {
   let displayMicOn = "none";
   let displayMicOff = "inline";
-  let dispayStatus = '';
+  let displayStatus = '';
   const colorBackroundStatus = colorStatus[user.user_login_status] ?? '';
-  const statusIconElement = statusIcon[user.user_status_icon] ?? '';
   if (user.user_is_mic == '1') {
     displayMicOn = "inline";
     displayMicOff = "none";
@@ -212,14 +211,14 @@ function createUsersHTMLInRoom(user: any) {
 
   if (!user_login_status) {
     if (!user_status_icon){
-    dispayStatus = '-none';
+    displayStatus = '-none';
     user_login_status = ''
   }
 }
   return `
                         <div class="user" id="user-${user.user_id}">
                             <div class="logo-user button"><img src="${user.user_avatar}"></div>
-                            <div id='login-status-${user.user_id}' class="status-users${dispayStatus}" style="background-color: ${colorBackroundStatus}; border: transparent">
+                            <div id='login-status-${user.user_id}' class="status-users${displayStatus}" style="background-color: ${colorBackroundStatus};">
                             <img src="${user_status_icon}"></div>
                             <h4 class="button">${user.user_name}</h4>
                             <div class="mic button" onclick="changeStatusMic(${user.user_id})">
@@ -418,6 +417,7 @@ const loadStatusUser = (user: any) => {
     status.innerText = 'ステータス変更';
   } else {
     status.innerText = statusUser[user.login_status];
+    //Xử lý chữ trên nút status màu xanh
   }
   if (user.is_mic == 1) {
     micOn.style.display = "inline";
@@ -523,7 +523,7 @@ function appendUser(user: any) {
   let text = `
                       <div class="user" id="user-${user.userId}">
                           <div class="logo-user button"><img src="${user.userAvatar}"></div>
-                          <div id='login-status-${user.userId}' class="status-users${dispayStatus}" style="background-color: ${colorBackroundStatus}; border:transparent;">
+                          <div id='login-status-${user.userId}' class="status-users${dispayStatus}" style="background-color: ${colorBackroundStatus};">
                           <img src="${loginStatus}"></div>
                           <h4 class="button">${user.username}</h4>
                           <div class="mic button" onclick="changeStatusMic(${user.userId})">
@@ -604,6 +604,7 @@ const onChangeStatusEvent = (user: any) => {
     if (user.status == CUSTOM_STATUS) {
       loginStatus.innerText = user.custom_status
     } else {
+      //khi switch status thì trên user-list sẽ thay đổi status ban đầu là text, khi chuyển room thì lại ra hình
       loginStatus.innerText = statusUser[user.status];
     }
     loginStatus.style.backgroundColor = colorStatus[user.status];
@@ -1144,7 +1145,7 @@ function changeStatusUser(idStatus: any, custom_status: string | undefined = und
     custom_status: custom_status
   }
 
-  // on speaker when chang special status
+  // on speaker when change special status
   if (idStatus === SPECIAL_STATUS) {
     if (micOn.style.display === 'inline') {
       changeStatusMic(localStorage.getItem('userId'));
