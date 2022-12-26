@@ -599,13 +599,14 @@ const onChangeSpeakerEvent = (user: any) => {
 }
 
 const onChangeStatusEvent = (user: any) => {
-  const loginStatus = document.querySelector(`#login-status-${user.userId}`) as HTMLInputElement;
+  const loginStatus = document.querySelector(`#login-status-${user.userId} img`) as HTMLInputElement;
+  const statusBackground = document.querySelector(`#login-status-${user.userId}`) as HTMLInputElement;
   if (loginStatus != null) {
     if (user.status == CUSTOM_STATUS) {
-      loginStatus.innerText = user.custom_status
+      loginStatus.src = user.custom_status
     } else {
       //khi switch status thì trên user-list sẽ thay đổi status ban đầu là text, khi chuyển room thì lại ra hình
-      loginStatus.innerText = statusUser[user.status];
+      loginStatus.innerHTML = statusIcon[user.status];
     }
     loginStatus.style.backgroundColor = colorStatus[user.status];
   }
@@ -711,8 +712,6 @@ const onCreateFloorEvent = (floor: any) => {
   newFloorElement.style.zIndex = '1000';
   const lastChild = document.getElementById('floors')?.lastElementChild as HTMLElement;
   const top = lastChild.style.top;
-  const position = parseInt(top.substring(0, top.indexOf('p'))) + 60;
-  newFloorElement.style.top = `${position}px`;
   document.getElementById('floors')?.appendChild(newFloorElement);
   floorIds.push(floor.floor_id);
 }
@@ -1007,7 +1006,7 @@ function changeStatusSpeaker(id: any) {
 function listenerChangeStatus(e: any) {
   if (e.code === "Enter") {
     const customStatus: any = document.getElementById("custom-status");
-    statusIcon[CUSTOM_STATUS] = customStatus.value;
+    statusUser[CUSTOM_STATUS] = customStatus.value;
     localStorage.setItem("custom_status", statusIcon[CUSTOM_STATUS])
     changeStatusUser(CUSTOM_STATUS, customStatus.value)
     let showStatus = document.getElementById("show-status");

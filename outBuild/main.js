@@ -69,7 +69,6 @@ const socket = (0, socket_io_client_1.default)(`https://spaceback.developbase.ne
     },
     transports: ['websocket']
 });
-store.clear();
 if (store.get('is_login')) {
     axiosConfig_1.default.get('/users/get-socket-id')
         .then((data) => {

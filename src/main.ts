@@ -35,7 +35,6 @@ const socket: any = io(`https://spaceback.developbase.net/`, {
   },
   transports: ['websocket']
 });
-store.clear();
 if (store.get('is_login')) {
   axiosIns.get('/users/get-socket-id')
     .then((data: any) => {
