@@ -23,9 +23,7 @@ const statusIcon = [
 "../static/rush.png",
 "../static/viber.png",
 "../static/logout.png",
-"../static/briefcase.png",
-"",
-"#555C55FF"
+"../static/briefcase.png"
 ]
 
 let floorIds: any = [];
@@ -612,7 +610,6 @@ const onChangeStatusEvent = (user: any) => {
     loginStatus.src=''
     }
     else {
-      //khi switch status thì trên user-list sẽ thay đổi status ban đầu là text, khi chuyển room thì lại ra hình
       loginStatus.src = statusIcon[user.status];
     }
     statusBackground.style.backgroundColor = colorStatus[user.status];

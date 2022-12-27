@@ -31,9 +31,7 @@ const statusIcon = [
     "../static/rush.png",
     "../static/viber.png",
     "../static/logout.png",
-    "../static/briefcase.png",
-    "",
-    "#555C55FF"
+    "../static/briefcase.png"
 ];
 let floorIds = [];
 let role = 0;
@@ -593,13 +591,10 @@ const onChangeStatusEvent = (user) => {
             loginStatus.src = user.custom_status;
         }
         if (user.status == SPECIAL_STATUS) {
-            // let removeIcon = document.getElementById(`#login-status-${user.userId} img`)as HTMLInputElement;
-            // document.getElementById(`#login-status-${user.userId} img`).removeChild(removeIcon)
             statusBackground.style.backgroundColor = colorStatus[user.status];
             loginStatus.src = '';
         }
         else {
-            //khi switch status thì trên user-list sẽ thay đổi status ban đầu là text, khi chuyển room thì lại ra hình
             loginStatus.src = statusIcon[user.status];
         }
         statusBackground.style.backgroundColor = colorStatus[user.status];
