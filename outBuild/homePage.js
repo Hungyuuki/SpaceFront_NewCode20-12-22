@@ -31,7 +31,9 @@ const statusIcon = [
     "../static/rush.png",
     "../static/viber.png",
     "../static/logout.png",
-    "../static/briefcase.png"
+    "../static/briefcase.png",
+    "",
+    "#555C55FF"
 ];
 let floorIds = [];
 let role = 0;
@@ -584,17 +586,23 @@ const onChangeSpeakerEvent = (user) => {
     }
 };
 const onChangeStatusEvent = (user) => {
-    const loginStatus = document.querySelector(`#login-status-${user.userId} img`);
-    const statusBackground = document.querySelector(`#login-status-${user.userId}`);
+    var loginStatus = document.querySelector(`#login-status-${user.userId} img`);
+    var statusBackground = document.querySelector(`#login-status-${user.userId}`);
     if (loginStatus != null) {
         if (user.status == CUSTOM_STATUS) {
             loginStatus.src = user.custom_status;
         }
+        if (user.status == SPECIAL_STATUS) {
+            // let removeIcon = document.getElementById(`#login-status-${user.userId} img`)as HTMLInputElement;
+            // document.getElementById(`#login-status-${user.userId} img`).removeChild(removeIcon)
+            statusBackground.style.backgroundColor = colorStatus[user.status];
+            loginStatus.src = '';
+        }
         else {
             //khi switch status thì trên user-list sẽ thay đổi status ban đầu là text, khi chuyển room thì lại ra hình
-            loginStatus.innerHTML = statusIcon[user.status];
+            loginStatus.src = statusIcon[user.status];
         }
-        loginStatus.style.backgroundColor = colorStatus[user.status];
+        statusBackground.style.backgroundColor = colorStatus[user.status];
     }
     if (localStorage.getItem('userId') == user.userId) {
         if (user.status === SPECIAL_STATUS) {
