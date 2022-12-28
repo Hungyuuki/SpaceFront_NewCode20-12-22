@@ -433,18 +433,23 @@ function createFLoorsHTML(floors, floor_id, role) {
     localStorage.setItem('first_floor', floors[0].id);
     let floorsHTML = ``;
     for (let i = 0; i < floors.length; i++) {
-        floorsHTML += createFLoorElement(floors[i], floors[i].id == floor_id ? 'rgb(252,76,86)' : 'rgb(238, 238, 238)', role);
+        //Tạo floor
+        floorsHTML += createFLoorElement(floors[i], 
+        //Set màu nền, click thì đỏ, ko click thì xám
+        floors[i].id == floor_id ? 'rgb(252,76,86)' : 'rgb(238, 238, 238)', 
+        //set màu text, clock thì trắng, ko click thì đen
+        floors[i].id == floor_id ? '#ffffff' : 'rgb(61, 62, 68)', role);
     }
     if (role == ROLE_ADMIN) {
         floorsHTML += `<svg class="floors add-new" viewBox="0 0 100 100" style="width: 40px; height: 40px; background-color: rgb(255,255,255);" onclick="addFloor()">
   <circle cx="50" cy="37" r="29" fill="none" stroke-width="6"></circle>
   <line class="plus" x1="35.5" y1="38" x2="65.5" y2="38" stroke-width="6"></line>
   <line class="plus" x1="50" y1="23.5" x2="50" y2="53.5" stroke-width="6"></line>
-</svg>`;
+  </svg>`;
     }
     return floorsHTML;
 }
-function createFLoorElement(floor, backgroundColor, role) {
+function createFLoorElement(floor, backgroundColor, color, role) {
     if (role == 2) {
         return `
     <div class="floor" style="display: inline-flex; max-width: 100px; min-width: 60px;
@@ -455,7 +460,7 @@ function createFLoorElement(floor, backgroundColor, role) {
     scroll-snap-stop: normal;
     vertical-align: middle; 
     background-color: ${backgroundColor}; 
-    color: rgb(238, 238, 238)'; 
+    color: ${color};
     z-index: 1000;" 
     id=${floor.id} 
     onclick="showFloor(${floor.id})" >
@@ -474,7 +479,7 @@ function createFLoorElement(floor, backgroundColor, role) {
   scroll-snap-stop: normal;
   vertical-align: middle; 
   background-color: ${backgroundColor}; 
-  color: rgb(238, 238, 238)'; 
+  color: ${color};
   z-index: 1000;" 
   id=${floor.id} 
   onclick="showFloor(${floor.id})" >
@@ -607,6 +612,15 @@ const onChangeStatusEvent = (user) => {
             document.getElementById('status').innerHTML = user.custom_status;
         }
         else {
+            // let statusTypingUser= `<div id="status" style =
+            // background-color:green;
+            // width:100px;
+            // height:100px;
+            // position:relative;
+            // left:0px;
+            // animation-name:move_right;
+            // animation-duration:3s;
+            // animation-iteration-count:infinite;">${statusUser}</button>`;
             document.getElementById('status').innerHTML = statusUser[user.status];
         }
     }
@@ -665,6 +679,7 @@ function appendNewFloor(floor_id, old_floor_id, name) {
     newFloorElement.setAttribute('onclick', `showFloor(${floor_id})`);
     if (floor_id.user_id == localStorage.getItem('userId')) {
         newFloorElement.style.backgroundColor = 'rgb(252,76,86)';
+        changeTextColorForElement(`${floor_id}`, '#ffffff');
     }
     else {
         newFloorElement.style.backgroundColor = 'rgb(193,195,205)';
@@ -675,7 +690,7 @@ function appendNewFloor(floor_id, old_floor_id, name) {
     let position = 0;
     if (numberChilds != null && addFloor != null) {
         position = ((numberChilds == 1 ? 0 : numberChilds - 1) * 60);
-        newFloorElement.style.top = `${position}px`;
+        // newFloorElement.style.top = `${position}px`;
         // addFloor.style.top = `${position + 60}px`;
     }
     newFloorElement.innerHTML = `
@@ -698,7 +713,8 @@ const onCreateFloorEvent = (floor) => {
     newFloorElement.setAttribute('class', 'floor');
     newFloorElement.setAttribute('onclick', `showFloor(${floor.floor_id})`);
     newFloorElement.style.backgroundColor = '#dbdbdb';
-    newFloorElement.innerHTML = `<p>${floor.name}</p>`;
+    // newFloorElement.style.color = '#ffffff';
+    newFloorElement.innerHTML = `<p >${floor.name}</p>`;
     newFloorElement.style.zIndex = '1000';
     const lastChild = (_a = document.getElementById('floors')) === null || _a === void 0 ? void 0 : _a.lastElementChild;
     const top = lastChild.style.top;

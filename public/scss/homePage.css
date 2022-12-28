@@ -329,17 +329,6 @@ ul {
 }
 
 .status-users-none {
-  /* border: none;
-  width: 70px;
-  height: 32px;
-  font-size: 11px;
-  margin-left: -10px;
-  border-radius: 5px;
-  color: white;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: center; */
   width: 30px;
   height: 30px;
   font-size: 10px;
@@ -368,6 +357,7 @@ ul {
 }
 #show-status{
 align-items: center;
+width: 115px;
 }
 
 .show-status .statusIcon{
@@ -591,18 +581,23 @@ button {
 
 .show-status p{
   margin: 10px 0 10px 0;
-  width: 100px;
+  width: 115px;
   height: 20px;
   text-align: center;
   cursor: pointer;
   font-size: 14px;
   position: static;
-  align-items: center;
-  /* margin-bottom: 5px; */
+  /* align-items: center; */
+  margin-bottom: 5px;
   position: relative;
 }
 .show-status p .statusIcon{
-  bottom: 5px;
+  position: absolute;
+  left: 20px;
+}
+.show-status span{
+  position: absolute;
+  left: 48px;
 }
 
 
@@ -618,7 +613,7 @@ button {
   border: none;
   color: white;
   border-radius: 10px;
-  width: 100px;
+  width: 115px;
   display: block;
   z-index: 10;
   text-align: center;
